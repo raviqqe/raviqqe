@@ -5,10 +5,15 @@ on:
       - main
   pull_request:
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npx markdown-link-check README.md
   spell_check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: streetsidesoftware/cspell-action@main
         with:
-          files: "*.{js,md}"
+          files: "*.md"
